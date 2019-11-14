@@ -1,16 +1,18 @@
 class Tile {
-    constructor(img, x, y, width, height){
+    constructor(img, index, row, column, width, height){
         this.img = img;
-        this.x = x;
-        this.y = y;
         this.width = width;
         this.height = height;
+        this.x = index%row*this.width;
+        this.y = Math.trunc(index/column)*this.height;
         this.angle = 0;
         this.theta = 0;
         this.isBeingHovered = false;
     }
 
-    update(mouseX, mouseY){
+    update(index, row, column, mouseX, mouseY){
+        this.x = index%row*this.width;
+        this.y = Math.trunc(index/column)*this.height;
         if(this.contains(mouseX, mouseY)){
             this.isBeingHovered = true;
         } else {
