@@ -1,5 +1,5 @@
 let tiles = []; // Declare variable 'img'.
-let quantImgs = 11;
+let quantImgs = 30;
 let row = 12;
 let column = 12;
 let quantTiles = row*column;
