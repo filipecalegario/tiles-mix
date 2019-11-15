@@ -46,6 +46,12 @@ function touchStarted() {
   actionToRotate();
 }
 
+function touchEnded() {
+  for (let i = 0; i < quantTiles; i++){
+    tiles[i].isBeingHovered = false;
+  }
+}
+
 function keyPressed(){
   shuffleTiles();
 }
