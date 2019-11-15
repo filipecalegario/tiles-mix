@@ -11,7 +11,7 @@ let saveCounts = 0;
 
 function preload(){
   for (let i = 0; i < quantTiles; i++){
-    img = loadImage('assets/' + i%quantImgs + '.png');
+    img = loadImage('mytiles/' + i%quantImgs + '.png');
     tiles[i] = new Tile(img, i, row, column, tileWidth, tileHeight);
   }
 }
