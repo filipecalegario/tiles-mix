@@ -35,7 +35,7 @@ class Tile {
         imageMode(CENTER);
         translate(this.width/2, this.height/2);
         rotate(this.theta);
-        image(this.img, 0, 0);
+        image(this.img, 0, 0, this.width, this.height);
         pop();
         if(this.isBeingHovered){
             strokeWeight(3);
