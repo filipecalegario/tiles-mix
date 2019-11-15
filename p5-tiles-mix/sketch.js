@@ -1,33 +1,35 @@
 let tiles = []; // Declare variable 'img'.
-let row = 4;
-let column = 4;
-let tileWidth = 101;
-let tileHeight = 101;
+let quantImgs = 11;
+let row = 3;
+let column = 3;
+let tileWidth = 171;
+let tileHeight = 171;
 let shuffleButton;
 let saveButton;
 let saveCounts = 0;
 
 function preload(){
-  for (let i = 0; i < 16; i++){
+  for (let i = 0; i < quantImgs; i++){
     img = loadImage('assets/' + i + '.png');
     tiles[i] = new Tile(img, i, row, column, tileWidth, tileHeight);
   }
 }
 
 function setup() {
-  createCanvas(404, 404);
+  createCanvas(row*tileWidth, column*tileHeight);
+  //createCanvas(1000, 1000);
   shuffleButton = createButton('shuffle');
-  shuffleButton.position(202, 420);
+  shuffleButton.position(width/2, height + 20);
   shuffleButton.mousePressed(shuffleTiles);
   saveButton = createButton('save');
-  saveButton.position(150, 420);
+  saveButton.position(width/2 - 50, height + 20);
   saveButton.mousePressed(saveAsImage);
 }
 
 function draw() {
   background(255);
   // Displays the image at its actual size at point (0,0)
-  for (let i = 0; i < 16; i++){
+  for (let i = 0; i < quantImgs; i++){
     tiles[i].update(i, row, column, mouseX, mouseY);
     tiles[i].display();
   }
@@ -36,12 +38,11 @@ function draw() {
 }
 
 function mouseClicked(){
-  for (let i = 0; i < 16; i++){
-    if(tiles[i].contains(mouseX, mouseY)){
-      tiles[i].rotate();
-      console.log(tiles[i].theta);
-    }
-  }
+  //actionToRotate();
+}
+
+function touchStarted() {
+  actionToRotate();
 }
 
 function keyPressed(){
@@ -56,4 +57,13 @@ function shuffleTiles(){
 function saveAsImage(){
   saveCanvas('combination' + saveCounts, 'png');
   saveCounts = saveCounts + 1;
+}
+
+function actionToRotate(){
+  for (let i = 0; i < quantImgs; i++){
+    if(tiles[i].contains(mouseX, mouseY)){
+      tiles[i].rotate();
+      console.log(tiles[i].theta);
+    }
+  }
 }
